@@ -1,4 +1,4 @@
-body {
+* {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -15,16 +15,47 @@ code {
     monospace;
 }
 
-.todo {
+.App {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   position: absolute;
   left: 50%;
   top: 50%;
   width: calc(100vw - 30px);
   height: calc(100vh - 100px);
+  background-color: #B7C4F0;
   transform: translate(-50%, -50%);
-  box-shadow: 1px 2px 20px #f3f3f3;
+  box-shadow: 1px 2px 20px #d8ddee;
   border-radius: 10px;
-  border: 1px solid #f1f1f1;
+  border: 1px solid #afbff3;
   font-size: 14px;
+}
+
+.header ul{  
+  display: flex;
+  width: calc(100vw - 30px);
+  height: 10vh;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #6A81D3;
+  font-size: 24px;
+}
+
+.content { 
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2vw;
+  padding: .5em;
+  justify-content: center;
+  text-align: center;
+  }
+.content > img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
 }
