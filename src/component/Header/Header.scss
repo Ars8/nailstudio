@@ -1,0 +1,11 @@
+.header ul{  
+    display: flex;
+    width: calc(100vw - 100px);
+    height: 10vh;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #6A81D3;
+    font-size: 24px;
+  }
