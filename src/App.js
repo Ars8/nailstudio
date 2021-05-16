@@ -1,12 +1,13 @@
 import React from 'react';
-import { Header } from './component';
-import Portfolio from './component/Portfolio';
+import { Header, Portfolio, Appointment, Price } from './component';
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Portfolio />
+      <Header/>
+      <Portfolio/>
+      <Appointment/>
+      <Price/>
     </div>
   );
 }

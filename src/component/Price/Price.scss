@@ -1,0 +1,17 @@
+.price {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: calc(100vw - 400px);
+    height: calc(100vh - 400px);
+    background-color: #f4f4f5;
+    transform: translate(-50%, -50%);
+    box-shadow: 1px 2px 20px #d8ddee;
+    border-radius: 10px;
+    border: 1px solid #afbff3;
+    font-size: 14px;
+}
