@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './Header.scss';
 
@@ -6,9 +7,15 @@ function Header() {
   return (
     <div className="header">
       <ul>
-        <li>Работы</li>
-        <li>Запись</li>
-        <li>Цены</li>
+        <li>
+          <Link to="/">Работы</Link>
+        </li>
+        <li>
+          <Link to="/appoint">Запись</Link>
+        </li>
+        <li>
+          <Link to="/price">Цены</Link>
+        </li>
       </ul>
     </div>
   );
