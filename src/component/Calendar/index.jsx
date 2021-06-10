@@ -19,10 +19,9 @@ function Calendar(props) {
   const monthy = () => {
     return date.getMonth();
   };
-  const month = monthy();
+
   const year = yeary();
-  console.log(month);
-  console.log(year);
+  const month = monthy();
 
   const handlePrevMonthButtonClick = () => {
     const date = new Date(year, month - 1);
