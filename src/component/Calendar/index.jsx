@@ -6,51 +6,30 @@ import * as calendar from './calendar';
 import './index.scss';
 
 function Calendar(props) {
-  const [date, setDate] = React.useState(props.date);
-  const [selectedDate, setSelectedDate] = React.useState(null);
   const monthSelect = React.useRef();
   const yearSelect = React.useRef();
   const currentDate = new Date();
 
-  const yeary = () => {
-    return date.getFullYear();
-  };
-
-  const monthy = () => {
-    return date.getMonth();
-  };
-
-  const year = yeary();
-  const month = monthy();
-
   const handlePrevMonthButtonClick = () => {
-    const date = new Date(year, month - 1);
-
-    setDate({ date });
+    props.onHandlePrevMonthButtonClick();
   };
 
   const handleNextMonthButtonClick = () => {
-    const date = new Date(year, month + 1);
-
-    setDate({ date });
+    props.onHandleNextMonthButtonClick();
   };
 
   const handleSelectChange = () => {
     const year = yearSelect.current.value;
     const month = monthSelect.current.value;
-
-    const date = new Date(year, month);
-
-    setDate({ date });
+    props.onHandleSelectChange(year, month);
   };
 
   const handleDayClick = (date) => {
-    setSelectedDate({ selectedDate: date });
-
+    props.onHandleDayClick(date);
     props.onChange(date);
   };
 
-  const { years, monthNames, weekDayNames } = props;
+  const { year, month, years, monthNames, weekDayNames } = props;
 
   const monthData = calendar.getMonthData(year, month);
 
@@ -96,7 +75,7 @@ function Calendar(props) {
                     key={index}
                     className={classnames('day', {
                       today: calendar.areEqual(date, currentDate),
-                      selected: calendar.areEqual(date, selectedDate),
+                      selected: calendar.areEqual(date, props.selectedDate),
                     })}
                     onClick={() => handleDayClick(date)}>
                     {date.getDate()}

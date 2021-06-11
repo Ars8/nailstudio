@@ -24,19 +24,48 @@ const Appointment = () => {
     ],
     weekDayNames: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
   };
-  const [date, setDate] = React.useState(null);
+  const [date, setDate] = React.useState(defaultProps.date);
+  const [selectedDate, setSelectedDate] = React.useState(date);
   const handleDateChange = (date) => setDate(date);
+  const year = date.getFullYear();
+
+  const month = date.getMonth();
+
+  const handlePrevMonthButtonClick = () => {
+    const date = new Date(year, month - 1);
+    setDate(date);
+  };
+
+  const handleNextMonthButtonClick = () => {
+    const date = new Date(year, month + 1);
+    setDate(date);
+  };
+
+  const handleSelectChange = (year, month) => {
+    const date = new Date(year, month);
+    setDate(date);
+  };
+
+  const handleDayClick = (date) => {
+    setSelectedDate(date);
+  };
 
   return (
     <div>
-      {console.log(date)}
-      {date && <p>Выбранная дата: {date.toLocaleDateString()}</p>}
+      {date && <p>Выбранная дата: {selectedDate.toLocaleDateString()}</p>}
       <Calendar
-        date={defaultProps.date}
+        date={date}
         years={defaultProps.years}
         monthNames={defaultProps.monthNames}
         weekDayNames={defaultProps.weekDayNames}
+        year={year}
+        month={month}
+        selectedDate={selectedDate}
         onChange={handleDateChange}
+        onHandlePrevMonthButtonClick={handlePrevMonthButtonClick}
+        onHandleNextMonthButtonClick={handleNextMonthButtonClick}
+        onHandleSelectChange={handleSelectChange}
+        onHandleDayClick={handleDayClick}
       />
     </div>
   );
