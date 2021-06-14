@@ -16,10 +16,9 @@ code {
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-rows: 10vh 1fr;
+  grid-template-columns: 1fr;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -33,10 +32,12 @@ code {
   font-size: 14px;
 }
 
-.wrapper {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr;
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 button, select {

@@ -1,15 +1,14 @@
 .portfolio { 
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 2vw;
-    padding: .5em;
-    justify-content: center;
-    text-align: center;
-    margin-top: 40px;
-    }
-  .portfolio > img {
-    width: 100%;
-    max-width: 200px;
-    height: auto;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.portfolio > img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+.portfolio > img:not(:last-child){ 
+  margin-right: 10vw;
+}

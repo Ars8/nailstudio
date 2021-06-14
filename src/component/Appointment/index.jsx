@@ -51,8 +51,10 @@ const Appointment = () => {
   };
 
   return (
-    <div>
-      {date && <p>Выбранная дата: {selectedDate.toLocaleDateString()}</p>}
+    <div className="appointment">
+      <div className="appointment__header">
+        {date && <p>Выбранная дата: {selectedDate.toLocaleDateString()}</p>}
+      </div>
       <Calendar
         date={date}
         years={defaultProps.years}
