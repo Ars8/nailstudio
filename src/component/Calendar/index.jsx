@@ -29,7 +29,7 @@ function Calendar(props) {
     props.onChange(date);
   };
 
-  const { year, month, years, monthNames, weekDayNames } = props;
+  const { year, month, years, monthNames, weekDayNames, selectedDate } = props;
 
   const monthData = calendar.getMonthData(year, month);
 
@@ -75,7 +75,7 @@ function Calendar(props) {
                     key={index}
                     className={classnames('day', {
                       today: calendar.areEqual(date, currentDate),
-                      selected: calendar.areEqual(date, props.selectedDate),
+                      selected: calendar.areEqual(date, selectedDate),
                     })}
                     onClick={() => handleDayClick(date)}>
                     {date.getDate()}

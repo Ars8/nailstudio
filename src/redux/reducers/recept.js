@@ -1,5 +1,6 @@
 const initialState = {
-  date: null,
+  date: new Date(),
+  selectedDate: null,
 };
 
 const recept = (state = initialState, action) => {
@@ -7,6 +8,11 @@ const recept = (state = initialState, action) => {
     return {
       ...state,
       date: action.payload,
+    };
+  } else if (action.type === 'SET_SELECTED_DATE') {
+    return {
+      ...state,
+      selectedDate: action.payload,
     };
   }
   return state;
