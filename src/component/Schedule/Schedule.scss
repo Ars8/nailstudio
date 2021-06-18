@@ -1,0 +1,17 @@
+.scheduleHours li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 7vh;
+    width: 30vw;
+    background-color: azure;
+    border-radius: 5px;
+    &:not(:last-child){
+        margin-bottom: 2px;
+    }
+    &:hover{
+        background-color: aquamarine;
+        cursor: pointer;
+    }
+}

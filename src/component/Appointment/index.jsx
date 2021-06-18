@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Calendar from '../Calendar/index';
 import Schedule from '../Schedule/index';
-import { setDateRecept, setSelectedDateRecept } from '../../redux/actions/recepts';
+import {
+  setDateRecept,
+  setSelectedDateRecept,
+  setSelectedHourRecept,
+} from '../../redux/actions/recepts';
 
 import './Appointment.scss';
 
@@ -31,6 +35,7 @@ const Appointment = () => {
   const dispatch = useDispatch();
   const date = useSelector(({ recept }) => recept.date);
   const selectedDate = useSelector(({ recept }) => recept.selectedDate);
+  const selectedHour = useSelector(({ recept }) => recept.selectedHour);
   const [visibleDaySelect, setVisibleDaySelect] = React.useState(false);
   const handleDateChange = (date) => dispatch(setDateRecept(date));
 
@@ -40,20 +45,21 @@ const Appointment = () => {
 
   console.log(date);
   console.log(selectedDate);
+  console.log(selectedHour);
 
   const handlePrevMonthButtonClick = () => {
     const date = new Date(year, month - 1);
-    dispatch(setDateRecept(date));
+    handleDateChange(date);
   };
 
   const handleNextMonthButtonClick = () => {
     const date = new Date(year, month + 1);
-    dispatch(setDateRecept(date));
+    handleDateChange(date);
   };
 
   const handleSelectChange = (year, month) => {
     const date = new Date(year, month);
-    dispatch(setDateRecept(date));
+    handleDateChange(date);
   };
 
   const handleDayClick = (date) => {
@@ -65,9 +71,14 @@ const Appointment = () => {
     setVisibleDaySelect(false);
   };
 
+  const selectHour = (hour) => {
+    dispatch(setSelectedHourRecept(hour));
+  };
+
   return (
     <div className="appointment">
       <div className="appointment__header">
+        {visibleDaySelect && <button onClick={selectVisibleDay}>Поменять дату</button>}
         {selectedDate && <p>Выбранная дата: {selectedDate.toLocaleDateString()}</p>}
       </div>
       {!visibleDaySelect && (
@@ -88,8 +99,7 @@ const Appointment = () => {
       )}
       {visibleDaySelect && (
         <div>
-          <button onClick={selectVisibleDay}>Поменять дату</button>
-          <Schedule scheduleHours={defaultProps.scheduleHours} />
+          <Schedule scheduleHours={defaultProps.scheduleHours} onSelectHour={selectHour} />
         </div>
       )}
     </div>

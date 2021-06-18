@@ -9,6 +9,8 @@ function Calendar(props) {
   const monthSelect = React.useRef();
   const yearSelect = React.useRef();
   const currentDate = new Date();
+  const { year, month, years, monthNames, weekDayNames, selectedDate, onHandleDayClick, onChange } =
+    props;
 
   const handlePrevMonthButtonClick = () => {
     props.onHandlePrevMonthButtonClick();
@@ -25,11 +27,11 @@ function Calendar(props) {
   };
 
   const handleDayClick = (date) => {
-    props.onHandleDayClick(date);
-    props.onChange(date);
+    if (date > currentDate || calendar.areEqual(date, currentDate)) {
+      onHandleDayClick(date);
+      onChange(date);
+    }
   };
-
-  const { year, month, years, monthNames, weekDayNames, selectedDate } = props;
 
   const monthData = calendar.getMonthData(year, month);
 
@@ -68,11 +70,11 @@ function Calendar(props) {
 
         <tbody>
           {monthData.map((week, index) => (
-            <tr key={index} className="week">
+            <tr key={`${week}_${index}`} className="week">
               {week.map((date, index) =>
                 date ? (
                   <td
-                    key={index}
+                    key={`${date}_${index}`}
                     className={classnames('day', {
                       today: calendar.areEqual(date, currentDate),
                       selected: calendar.areEqual(date, selectedDate),
@@ -81,7 +83,7 @@ function Calendar(props) {
                     {date.getDate()}
                   </td>
                 ) : (
-                  <td key={index} />
+                  <td key={`${date}_${index}`} />
                 ),
               )}
             </tr>

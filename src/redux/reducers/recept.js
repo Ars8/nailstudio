@@ -1,6 +1,7 @@
 const initialState = {
   date: new Date(),
   selectedDate: null,
+  selectedHour: null,
 };
 
 const recept = (state = initialState, action) => {
@@ -13,6 +14,11 @@ const recept = (state = initialState, action) => {
     return {
       ...state,
       selectedDate: action.payload,
+    };
+  } else if (action.type === 'SET_SELECTED_HOUR') {
+    return {
+      ...state,
+      selectedHour: action.payload,
     };
   }
   return state;
