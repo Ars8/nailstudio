@@ -16,9 +16,10 @@ code {
 }
 
 .App {
-  display: grid;
-  grid-template-rows: 10vh 1fr;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -34,7 +35,7 @@ code {
 
 .content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   
