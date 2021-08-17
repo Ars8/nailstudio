@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Calendar from '../Calendar/index';
 import Schedule from '../Schedule/index';
+import Button from '../../shared/components/FormElements/Button';
+import Modal from '../../shared/components/UIElements/Modal';
+import Input from '../../shared/components/FormElements/Input';
 import {
   setDateRecept,
   setSelectedDateRecept,
@@ -37,6 +40,7 @@ const Appointment = () => {
   const selectedDate = useSelector(({ recept }) => recept.selectedDate);
   const selectedHour = useSelector(({ recept }) => recept.selectedHour);
   const [visibleDaySelect, setVisibleDaySelect] = React.useState(false);
+  const [showMap, setShowMap] = React.useState(false);
   const handleDateChange = (date) => dispatch(setDateRecept(date));
 
   const year = date.getFullYear();
@@ -71,9 +75,14 @@ const Appointment = () => {
     setVisibleDaySelect(false);
   };
 
+  const openMapHandler = () => setShowMap(true);
+
+  const closeMapHandler = () => setShowMap(false);
+
   const selectHour = (hour) => {
     dispatch(setSelectedHourRecept(hour));
-  };
+    openMapHandler();
+  };  
 
   return (
     <div className="appointment">
@@ -102,6 +111,21 @@ const Appointment = () => {
           <Schedule scheduleHours={defaultProps.scheduleHours} onSelectHour={selectHour} />
         </div>
       )}
+      <div>
+      <Modal
+        show={showMap}
+        onCancel={closeMapHandler}
+        contentClass="place-item__modal-content"
+        footerClass="place-item__modal-actions"
+        footer={<Button onClick={closeMapHandler}>CLOSE</Button>}
+      >
+        <div className="map-container">
+         <form className="place-form">
+           <Input element="input" type="text" lable="Title"/>
+         </form>
+        </div>
+      </Modal>
+    </div>
     </div>
   );
 };
