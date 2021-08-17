@@ -47,9 +47,9 @@ const Appointment = () => {
 
   const month = date.getMonth();
 
-  console.log(date);
+  /* console.log(date);
   console.log(selectedDate);
-  console.log(selectedHour);
+  console.log(selectedHour); */
 
   const handlePrevMonthButtonClick = () => {
     const date = new Date(year, month - 1);
@@ -115,11 +115,15 @@ const Appointment = () => {
       <Modal
         show={showMap}
         onCancel={closeMapHandler}
+        header={showMap}
         contentClass="place-item__modal-content"
         footerClass="place-item__modal-actions"
         footer={<Button onClick={closeMapHandler}>CLOSE</Button>}
       >
+        {console.log(selectedDate)}
+        {console.log(selectedHour)}
         <div className="map-container">
+          <p>selectedDate</p>
          <form className="place-form">
            <Input element="input" type="text" lable="Title"/>
          </form>
