@@ -47,6 +47,8 @@ const Appointment = () => {
 
   const month = date.getMonth();
 
+  const selectDate = date.toDateString();
+
   /* console.log(date);
   console.log(selectedDate);
   console.log(selectedHour); */
@@ -123,7 +125,7 @@ const Appointment = () => {
         {console.log(selectedDate)}
         {console.log(selectedHour)}
         <div className="map-container">
-          <p>selectedDate</p>
+          <div>Выбранная дата : {selectDate}</div>
          <form className="place-form">
            <Input element="input" type="text" lable="Title"/>
          </form>
