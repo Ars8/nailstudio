@@ -1,8 +1,11 @@
 .portfolio { 
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  align-content: space-around;
+  width: 60em;
 }
 .portfolio > img {
   width: 100%;
@@ -10,5 +13,17 @@
   height: auto;
 }
 .portfolio > img:not(:last-child){ 
-  margin-right: 10vw;
+  margin-right: 0;
+  margin-bottom: 1em;
+}
+
+@media (max-width: 768px) {
+  .portfolio { 
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+  }
 }

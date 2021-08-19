@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { Portfolio, Appointment, Price } from './component';
-import Home from './pages/Home';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 
 function App() {
@@ -14,9 +13,6 @@ function App() {
             <Switch>
               <Route path="/" exact>
                 <Portfolio />
-              </Route>
-              <Route path="/home">
-                <Home />
               </Route>
               <Route path="/appoint">
                 <Appointment />
