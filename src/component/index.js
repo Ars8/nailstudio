@@ -1,3 +1,2 @@
-export { default as Portfolio } from './Portfolio';
-export { default as Appointment } from './Appointment';
-export { default as Price } from './Price';
+export { default as Calendar } from './Calendar';
+export { default as Schedule } from './Schedule';

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Calendar from '../Calendar/index';
-import Schedule from '../Schedule/index';
+import Calendar from '../../component/Calendar/index';
+import Schedule from '../../component/Schedule/index';
 import Button from '../../shared/components/FormElements/Button';
 import Modal from '../../shared/components/UIElements/Modal';
 import Input from '../../shared/components/FormElements/Input';
