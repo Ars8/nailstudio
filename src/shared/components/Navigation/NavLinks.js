@@ -1,12 +1,17 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { setAdminAuth, setUserAuth } from '../../../redux/actions/auth';
 
 import './NavLinks.scss';
 
 const NavLinks = props => {
   const isLoggedIn = useSelector(({auth}) => auth.isLoggedIn);
   const isAdmin = useSelector(({auth}) => auth.isAdmin);
+  const dispatch = useDispatch();
+
+  const logout = () => dispatch(setUserAuth(false));
+  const adminOut = () => dispatch(setAdminAuth(false), setUserAuth(false));
 
   return (
   <ul className="nav-links">
@@ -41,17 +46,25 @@ const NavLinks = props => {
     )}
     {isLoggedIn && isAdmin && (
       <li>
-      <NavLink to="/portfolio/new">
+      <NavLink to="/portfolio/update">
         Редактировать фото
       </NavLink>
     </li>
     )}
-    {isLoggedIn && isAdmin && (
+    {!isLoggedIn && (
+        <li>
+          <NavLink to="/auth">AUTHENTICATE</NavLink>
+        </li>
+      )}
+    {isLoggedIn && (
       <li>
-      <NavLink to="/portfolio/:fotoId">
-        Редактировать фото
-      </NavLink>
-    </li>
+        <button onClick={logout}>ВЫЙТИ</button>
+      </li>
+    )}
+    {isAdmin && (
+      <li>
+        <button onClick={adminOut}>ВЫЙТИ</button>
+      </li>
     )}
   </ul>
   );

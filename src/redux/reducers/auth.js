@@ -1,6 +1,6 @@
 const initialState = {
-  isLoggedIn: true,
-  isAdmin: true
+  isLoggedIn: false,
+  isAdmin: false
 };
 
 const auth = (state = initialState, action) => {
