@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import recept from './recept';
-import auth from './auth';
+import recept from './ducks/recept/reducer';
+import auth from './ducks/auth/reducer';
 
 const rootReducer = combineReducers({
   recept,

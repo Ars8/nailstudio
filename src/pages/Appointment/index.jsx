@@ -10,7 +10,7 @@ import {
   setDateRecept,
   setSelectedDateRecept,
   setSelectedHourRecept,
-} from '../../redux/actions/recepts';
+} from '../../store/ducks/recept/actionCreators';
 
 import './Appointment.scss';
 
@@ -84,7 +84,9 @@ const Appointment = () => {
   const selectHour = (hour) => {
     dispatch(setSelectedHourRecept(hour));
     openMapHandler();
-  };  
+  }; 
+  
+  const modalHeaderMessage = `Оставьте свой номер телефона чобы мы могли связаться с Вами`;
 
   return (
     <div className="appointment">
@@ -117,7 +119,7 @@ const Appointment = () => {
       <Modal
         show={showMap}
         onCancel={closeMapHandler}
-        header={showMap}
+        header={modalHeaderMessage}
         contentClass="place-item__modal-content"
         footerClass="place-item__modal-actions"
         footer={<Button onClick={closeMapHandler}>CLOSE</Button>}

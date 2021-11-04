@@ -40,5 +40,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.34",
+    "@types/react-dom": "^17.0.11",
+    "@types/react-router-dom": "^5.3.2",
+    "typescript": "^4.4.4"
+  },
+  "main": "index.js",
+  "repository": "https://github.com/Ars8/nailstudio.git",
+  "author": "Ars8 <pogosov-91@mail.ru>",
+  "license": "MIT"
 }
