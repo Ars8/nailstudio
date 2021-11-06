@@ -10,7 +10,7 @@ import {
   setDateRecept,
   setSelectedDateRecept,
   setSelectedHourRecept,
-} from '../../store/ducks/recept/actionCreators';
+} from '../../store/ducks/recepts/actionCreators';
 
 import './Appointment.scss';
 
