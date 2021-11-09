@@ -46,30 +46,12 @@ export const receptsReducer = produce((draft: Draft<ReceptsState>, action: Recep
       draft.LoadingStatus = LoadingStatus.LOADED;
       break;
 
-    case ReceptsActionsType.FETCH_RECEPTS:
-      draft.items = [];
-      draft.LoadingStatus = LoadingStatus.LOADING;
-      break;
-
     case ReceptsActionsType.SET_LOADING_STATE:
       draft.LoadingStatus = action.payload;
       break;
 
-    case ReceptsActionsType.SET_ADD_FORM_STATE:
-      draft.addFormState = action.payload;
-      break;
-
-    case ReceptsActionsType.FETCH_ADD_RECEPT:
-      draft.addFormState = AddFormState.LOADING;
-      break;
-
-    case ReceptsActionsType.REMOVE_RECEPT:
-      draft.items = draft.items.filter((obj) => obj._id !== action.payload);
-      break;
-
     case ReceptsActionsType.ADD_RECEPT:
       draft.items.splice(0, 0, action.payload);
-      // TODO: Подумать, какой статус выбрать, если твит был добавлен
       draft.addFormState = AddFormState.NEVER;
       break;
 

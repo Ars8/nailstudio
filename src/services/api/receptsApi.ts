@@ -13,13 +13,8 @@ export const ReceptsApi = {
     );
     return data.data;
   },
-  async fetchReceptData(id: string): Promise<Recept> {
-    const { data } = await axios.get<Response<Recept>>('/recepts/' + id);
-    return data.data;
-  },
   async addRecept(payload: { text: string; images: string[] }): Promise<Recept> {
     const { data } = await axios.post<Response<Recept>>('/recepts', payload);
     return data.data;
   },
-  removeRecept: (id: string): Promise<void> => axios.delete('/recepts/' + id),
 };

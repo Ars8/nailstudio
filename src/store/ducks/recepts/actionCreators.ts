@@ -20,32 +20,16 @@ export const setSelectedHourRecept = (setSelectedHour) => ({
 
 import { LoadingStatus } from '../../types';
 import {
-  AddReceptActionInterface,
-  FetchAddReceptActionInterface,
   FetchReceptsActionInterface,
-  RemoveReceptActionInterface,
-  SetAddFormStateActionInterface,
   SetReceptsActionInterface,
   SetReceptsLoadingStatusActionInterface,
   ReceptsActionsType,
+  AddReceptActionInterface,
 } from './contracts/actionTypes';
-import { AddFormState, Recept, ReceptsState } from './contracts/state';
+import { Recept, ReceptsState } from './contracts/state';
 
 export const setRecepts = (payload: ReceptsState['items']): SetReceptsActionInterface => ({
   type: ReceptsActionsType.SET_RECEPTS,
-  payload,
-});
-
-export const fetchAddRecept = (payload: {
-  text: string;
-  images: string[];
-}): FetchAddReceptActionInterface => ({
-  type: ReceptsActionsType.FETCH_ADD_RECEPT,
-  payload,
-});
-
-export const addRecept = (payload: Recept): AddReceptActionInterface => ({
-  type: ReceptsActionsType.ADD_RECEPT,
   payload,
 });
 
@@ -56,25 +40,17 @@ export const setReceptsLoadingStatus = (
   payload,
 });
 
-export const setAddFormState = (payload: AddFormState): SetAddFormStateActionInterface => ({
-  type: ReceptsActionsType.SET_ADD_FORM_STATE,
-  payload,
-});
-
-export const removeRecept = (payload: string): RemoveReceptActionInterface => ({
-  type: ReceptsActionsType.REMOVE_RECEPT,
-  payload,
-});
-
 export const fetchRecept = (): FetchReceptsActionInterface => ({
   type: ReceptsActionsType.FETCH_RECEPTS,
+});
+
+export const addRecept = (payload: Recept): AddReceptActionInterface => ({
+  type: ReceptsActionsType.ADD_RECEPT,
+  payload,
 });
 
 export type ReceptsActions =
   | SetReceptsActionInterface
   | FetchReceptsActionInterface
   | SetReceptsLoadingStatusActionInterface
-  | FetchAddReceptActionInterface
-  | AddReceptActionInterface
-  | SetAddFormStateActionInterface
-  | RemoveReceptActionInterface;
+  | AddReceptActionInterface;
