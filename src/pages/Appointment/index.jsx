@@ -7,9 +7,7 @@ import Button from '../../shared/components/FormElements/Button';
 import Modal from '../../shared/components/UIElements/Modal';
 import Input from '../../shared/components/FormElements/Input';
 import {
-  setDateRecept,
-  setSelectedDateRecept,
-  setSelectedHourRecept,
+  addRecept,
 } from '../../store/ducks/recepts/actionCreators';
 
 import './Appointment.scss';
@@ -41,17 +39,14 @@ const Appointment = () => {
   const selectedHour = useSelector(({ recept }) => recept.selectedHour);
   const [visibleDaySelect, setVisibleDaySelect] = React.useState(false);
   const [showMap, setShowMap] = React.useState(false);
-  const handleDateChange = (date) => dispatch(setDateRecept(date));
+  const handleDateChange = (date) => dispatch(addRecept(date));
+  /* const handleHourChange = (date) => dispatch(setSelectedHourRecept(hour)); */
 
   const year = date.getFullYear();
 
   const month = date.getMonth();
 
   const selectDate = date.toLocaleDateString();
-
-  /* console.log(date);
-  console.log(selectedDate);
-  console.log(selectedHour); */
 
   const handlePrevMonthButtonClick = () => {
     const date = new Date(year, month - 1);
@@ -69,7 +64,7 @@ const Appointment = () => {
   };
 
   const handleDayClick = (date) => {
-    dispatch(setSelectedDateRecept(date));
+    dispatch(handleDateChange(date));
     setVisibleDaySelect(true);
   };
 
@@ -82,7 +77,7 @@ const Appointment = () => {
   const closeMapHandler = () => setShowMap(false);
 
   const selectHour = (hour) => {
-    dispatch(setSelectedHourRecept(hour));
+    /* handleHourChange(hour); */
     openMapHandler();
   }; 
   
