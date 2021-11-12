@@ -8,12 +8,14 @@ export enum AddFormState {
 
 export interface Recept {
   date: Date;
+  selectedDate: Date;
+  selectedHour: string | null;
+  name: string;
+  phoneNumber: number;
 }
 
 export interface ReceptsState {
-  item: Date;
-  selectedDate: Date;
-  selectedHour: string | null;
+  items: Recept[];
   LoadingStatus: LoadingStatus;
   addFormState: AddFormState;
 }

@@ -5,18 +5,21 @@ import { ReceptsActionsType } from './contracts/actionTypes';
 import { AddFormState, ReceptsState } from './contracts/state';
 
 const initialReceptsState: ReceptsState = {
-  item: new Date(),
-  selectedDate: new Date(),
-  selectedHour: null,
+  items: [],
   addFormState: AddFormState.NEVER,
   LoadingStatus: LoadingStatus.NEVER,
 };
 
 export const receptsReducer = produce((draft: Draft<ReceptsState>, action: ReceptsActions) => {
   switch (action.type) {
-    case ReceptsActionsType.ADD_RECEPT:
-      draft.item = action.payload.date;
-      draft.addFormState = AddFormState.NEVER;
+    case ReceptsActionsType.SET_RECEPTS:
+      draft.items = action.payload;
+      draft.LoadingStatus = LoadingStatus.LOADED;
+      break;
+
+    case ReceptsActionsType.FETCH_RECEPTS:
+      draft.items = [];
+      draft.LoadingStatus = LoadingStatus.LOADING;
       break;
 
     default:

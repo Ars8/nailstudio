@@ -6,7 +6,7 @@ import Schedule from '../../component/Schedule/index';
 import Button from '../../shared/components/FormElements/Button';
 import Modal from '../../shared/components/UIElements/Modal';
 import Input from '../../shared/components/FormElements/Input';
-import { addRecept } from '../../store/ducks/recepts/actionCreators';
+import { fetchRecepts } from '../../store/ducks/recepts/actionCreators';
 import { setDate, setSelectedDate, setSelectedHour } from '../../store/ducks/recepts/selectors';
 
 import './Appointment.scss';
@@ -81,6 +81,10 @@ const Appointment = (): React.ReactElement => {
   }; 
   
   const modalHeaderMessage = `Оставьте свой номер телефона чобы мы могли связаться с Вами`;
+
+  React.useEffect(() => {
+    dispatch(fetchRecepts())
+  });
 
   return (
     <div className="appointment">

@@ -1,15 +1,30 @@
+import { LoadingStatus } from '../../types';
 import {
-  FetchAddReceptActionInterface,
+  FetchReceptsActionInterface,
   ReceptsActionsType,
-  AddReceptActionInterface,
+  SetReceptsActionInterface,
+  SetReceptsLoadingStatusActionInterface
 } from './contracts/actionTypes';
-import { Recept } from './contracts/state';
+import { ReceptsState } from './contracts/state';
 
-export const addRecept = (payload: Recept): AddReceptActionInterface => ({
-  type: ReceptsActionsType.ADD_RECEPT,
+
+export const fetchRecepts = (): FetchReceptsActionInterface => ({
+  type: ReceptsActionsType.FETCH_RECEPTS,
+});
+
+export const setRecepts = (payload: ReceptsState['items']): SetReceptsActionInterface => ({
+  type: ReceptsActionsType.SET_RECEPTS,
+  payload,
+});
+
+export const setReceptsLoadingStatus = (
+  payload: LoadingStatus,
+): SetReceptsLoadingStatusActionInterface => ({
+  type: ReceptsActionsType.SET_LOADING_STATE,
   payload,
 });
 
 export type ReceptsActions =
-  | FetchAddReceptActionInterface
-  | AddReceptActionInterface;
+  | FetchReceptsActionInterface
+  | SetReceptsActionInterface
+  | SetReceptsLoadingStatusActionInterface;
