@@ -7,12 +7,13 @@ export enum AddFormState {
 }
 
 export interface Recept {
-  _id: string;
-  text: string;
+  date: Date;
 }
 
 export interface ReceptsState {
-  items: Recept[];
+  item: Date;
+  selectedDate: Date;
+  selectedHour: string | null;
   LoadingStatus: LoadingStatus;
   addFormState: AddFormState;
 }

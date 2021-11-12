@@ -1,13 +1,14 @@
 import produce, { Draft } from 'immer';
 import { AuthState } from './contracts/state';
 import { AuthActionType } from './contracts/actionTypes';
+import { AuthActions } from './actionCreators';
 
 const initialAuthState: AuthState = {
     userAuth: false,
-    adminAuth: false,
+    adminAuth: true,
 };
 
-export const authReducer = produce ((draft: Draft<AuthState>, action: AuthAction) => {
+export const authReducer = produce ((draft: Draft<AuthState>, action: AuthActions) => {
     switch (action.type) {
         case AuthActionType.SET_USER_AUTH:
 					draft.userAuth = action.payload;

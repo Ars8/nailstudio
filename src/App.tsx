@@ -17,10 +17,11 @@ import {
 } from './pages';
 import Auth from './pages/Auth/Auth';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
+import { isAdm, isLogged } from './store/ducks/auth/selectors';
 
 function App() {
-  const isLoggedIn = useSelector(({auth}) => auth.isLoggedIn);
-  const isAdmin = useSelector(({auth}) => auth.isAdmin);
+  const isLoggedIn = useSelector(isLogged);
+  const isAdmin = useSelector(isAdm);
   console.log(isLoggedIn);
   console.log(isAdmin);
 

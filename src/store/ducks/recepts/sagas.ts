@@ -1,16 +1,17 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
-import { ReceptsApi } from '../../../services/api/receptsApi';
-import {
+import { /* call, put, */ takeLatest } from 'redux-saga/effects';
+/* import { ReceptsApi } from '../../../services/api/receptsApi'; */
+/* import {
   addRecept,
-} from './actionCreators';
+} from './actionCreators'; */
 import {
   FetchAddReceptActionInterface,
   ReceptsActionsType,
 } from './contracts/actionTypes';
 
 export function* fetchAddReceptRequest({ payload }: FetchAddReceptActionInterface): Generator {
-    const item: any = yield call(ReceptsApi.addRecept, payload);
-    yield put(addRecept(item));
+    /* const item: any = yield call(ReceptsApi.addRecept, payload);
+    yield put(addRecept(item)); */
+    yield console.log('hey')
 }
 
 export function* receptsSaga() {

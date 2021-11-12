@@ -6,13 +6,12 @@ import Schedule from '../../component/Schedule/index';
 import Button from '../../shared/components/FormElements/Button';
 import Modal from '../../shared/components/UIElements/Modal';
 import Input from '../../shared/components/FormElements/Input';
-import {
-  addRecept,
-} from '../../store/ducks/recepts/actionCreators';
+import { addRecept } from '../../store/ducks/recepts/actionCreators';
+import { setDate, setSelectedDate, setSelectedHour } from '../../store/ducks/recepts/selectors';
 
 import './Appointment.scss';
 
-const Appointment = () => {
+const Appointment = (): React.ReactElement => {
   const defaultProps = {
     years: [2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030],
     monthNames: [
@@ -34,17 +33,17 @@ const Appointment = () => {
   };
 
   const dispatch = useDispatch();
-  const date = useSelector(({ recept }) => recept.date);
-  const selectedDate = useSelector(({ recept }) => recept.selectedDate);
-  const selectedHour = useSelector(({ recept }) => recept.selectedHour);
+  const date = useSelector(setDate);
+  const selectedDate = useSelector(setSelectedDate);
+  const selectedHour = useSelector(setSelectedHour);
   const [visibleDaySelect, setVisibleDaySelect] = React.useState(false);
   const [showMap, setShowMap] = React.useState(false);
-  const handleDateChange = (date) => dispatch(addRecept(date));
+  const handleDateChange = (date: any) => dispatch(addRecept(date));
   /* const handleHourChange = (date) => dispatch(setSelectedHourRecept(hour)); */
 
-  const year = date.getFullYear();
+  const year: number = date.getFullYear();
 
-  const month = date.getMonth();
+  const month: number = date.getMonth();
 
   const selectDate = date.toLocaleDateString();
 
@@ -58,12 +57,12 @@ const Appointment = () => {
     handleDateChange(date);
   };
 
-  const handleSelectChange = (year, month) => {
+  const handleSelectChange = (year: number, month: number) => {
     const date = new Date(year, month);
     handleDateChange(date);
   };
 
-  const handleDayClick = (date) => {
+  const handleDayClick = (date: number) => {
     dispatch(handleDateChange(date));
     setVisibleDaySelect(true);
   };
@@ -76,7 +75,7 @@ const Appointment = () => {
 
   const closeMapHandler = () => setShowMap(false);
 
-  const selectHour = (hour) => {
+  const selectHour = (/* hour */) => {
     /* handleHourChange(hour); */
     openMapHandler();
   }; 

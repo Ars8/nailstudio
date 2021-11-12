@@ -1,17 +1,17 @@
 import React from 'react';
-/* import { useSelector, useDispatch } from 'react-redux'; */
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-/* import { setAdminAuth, setUserAuth } from '../../../store/ducks/auth/actionCreators'; */
+import { setAdminAuth, setUserAuth } from '../../../store/ducks/auth/actionCreators';
 
 import './NavLinks.scss';
 
 const NavLinks = props => {
-  /* const isLoggedIn = useSelector(({auth}) => auth.isLoggedIn);
+  const isLoggedIn = useSelector(({auth}) => auth.isLoggedIn);
   const isAdmin = useSelector(({auth}) => auth.isAdmin);
   const dispatch = useDispatch();
 
   const logout = () => dispatch(setUserAuth(false));
-  const adminOut = () => dispatch(setAdminAuth(false), setUserAuth(false)); */
+  const adminOut = () => dispatch(setAdminAuth(false), setUserAuth(false));
 
   return (
   <ul className="nav-links">

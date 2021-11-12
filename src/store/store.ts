@@ -1,7 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { AuthState } from './ducks/auth/contracts/state';
 import { ReceptsState } from './ducks/recepts/contracts/state';
-import { UserState } from './ducks/user/contracts/state';
 
 
 import { rootReducer } from './rootReducer';
@@ -20,7 +20,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 export interface RootState {
     recept: ReceptsState;
-    user: UserState;
+    auth: AuthState;
 }
 
 export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleware)));
